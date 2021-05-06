@@ -8,21 +8,46 @@
 
        <!-- CADASTRAR NOVO PERSONAGEM -->
       <form id="pers_form">
-        <label for="cad_nome">Nome:</label><br>
-        <input type="text" id="cad_usuario" required autofocus v-model="cad_usuario"><br>
-        <label for="cad_senha">Raça:</label><br>
-        
-        <vue-dropdown :config="racalist" @setSelectedOption="setNewSelectedOption($event);"></vue-dropdown>
+        <label for="per_nome">Nome:</label><br>
+        <input type="text" id="per_nome_personagem" required autofocus v-model="cad_usuario"><br>
 
-        <input type="password" id="cad_senha" required autofocus v-model="cad_senha"><br>
-        <label for="cad_exibicao">Nome de Exibição:</label><br>
-        <input type="text" id="cad_exibicao"
-          required autofocus
-          v-model="cad_exibicao">
+        <label for="per_raca">Raça:</label><br>
+        <vue-dropdown :config="racalist" @setSelectedOption="setNewRaca($event);"></vue-dropdown>
+
+        <!--<input type="password" id="cad_senha" required autofocus v-model="cad_senha"><br>-->
+
+        <label for="per_classe">Classe:</label><br>
+        <vue-dropdown :config="classelist" @setSelectedOption="setNewClasse($event);"></vue-dropdown>
+
+        <label for="per_hab">Habilidades:</label><br>
+        <!--<label for="per_hab_forca">Força</label><br>-->
+
+
+            <!--<div class="ability-score-manager-stats">-->
+                <div class="ability-score-manager-stat" data-stat-id="1"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_7">Força</label></span><span class="builder-field-input">
+                    <input class="builder-field-value" id="qry_7" type="text" value=""></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="2"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_8">Destreza</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_8" type="text" value=""></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="3"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_9">Constituição</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_9" type="text" value=""></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="4"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_10">Inteligência</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_10" type="text" value=""></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="5"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_11">Sabedoria</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_11" type="text" value=""></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="6"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_12">Carisma</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_12" type="text" value=""></span></div></div>
+            <!--</div>-->
+
+        <label for="per_classe">Antecedente:</label><br>
+        <vue-dropdown :config="antedlist" @setSelectedOption="setNewAnted($event);"></vue-dropdown>
+
+        <label for="per_hist">Historia:</label><br>
+        <input type="text" id="per_historia" required autofocus v-model="cad_usuario"><br>
+
+        <label for="per_hist">Equipamento:</label><br>
+        <input type="text" id="per_historia" required autofocus v-model="cad_usuario"><br>
+
+
+        <!--<input type="text" id="cad_exibicao" required autofocus v-model="cad_exibicao">-->
         <p><button type="submit">Salvar</button></p>
       </form>
 
-      <!-- LISTAGEM DOS USUÁRIOS -->
+      <!-- LISTAGEM DOS USUÁRIOS 
       <table border="1" width="750px"> 
         <thead align="left">
           <tr>
@@ -61,7 +86,7 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table>-->
 
       <!-- ATUALIZAÇÃO DE USUÁRIOS -->
       <div v-if="put_show" id="put_form">
@@ -87,7 +112,7 @@
       <div v-if="del_show" id="del_form">
         <form @submit.prevent="deletar">
           <h4>Digite "{{ del_usuario }}" para confirmar</h4>
-          <div class="form-group">
+          <div class="form-group"> 
               <input type="text" id="del_confirm"
               class="form-control" required autofocus
               v-model="del_confirm"> 
@@ -118,20 +143,49 @@ export default {
       put_show: false, put_usuario: '', put_senha: '', put_exibicao: '',
       del_show: false, del_usuario: '', del_confirm: '',
       cod_erro: '', put_type: '', showMenu: true,
+      classelist: {
+            options: [
+                {
+                    value: "Feiticeiro"
+                },
+                {
+                    value: "Lutador"
+                }
+            ],
+            placeholder: "Selecione uma classe",
+            width: 300,
+            backgroundColor: "gray"
+        },
       racalist: {
             options: [
                 {
-                    value: "Olar"
+                    value: "Humano"
                 },
                 {
-                    value: "Oi"
+                    value: "Elfo"
                 },
                 {
-                    value: "Hi"
+                    value: "Gnomo"
                 },
             ],
             placeholder: "Selecione uma raça",
             width: 300,
+            backgroundColor: "gray"
+        },
+        antedlist: {
+            options: [
+                {
+                    value: "Heremita"
+                },
+                {
+                    value: "Sábio"
+                },
+                {
+                    value: "Órfão"
+                },
+            ],
+            placeholder: "Selecione um antecedente",
+            width: 400,
             backgroundColor: "gray"
         }
     }
@@ -250,9 +304,18 @@ export default {
       }
     },
 
-    setNewSelectedOption(selectedOption) {
-      this.racalist.placeholder = selectedOption.value;
-    }
+    //setNewSelectedOption(selectedOption) {
+      //this.racalist.placeholder = selectedOption.value;
+    //},
+    setNewRaca(RacaSelecionada) {
+      this.racalist.placeholder = RacaSelecionada.value;
+    },
+    setNewClasse(ClasseSelecionada) {
+      this.classelist.placeholder = ClasseSelecionada.value;
+    },
+    setNewAnted(AntedSelecionado) {
+      this.antedlist.placeholder = AntedSelecionado.value;
+    },
     }
 }
 
@@ -263,7 +326,7 @@ export default {
 <style>
   h1{ margin-bottom: 30px; }
   table{
-    margin: auto;
+    margin: 100%;
     background: #e4e4e4;
   }
   form{
