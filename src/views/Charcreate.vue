@@ -9,10 +9,10 @@
        <!-- CADASTRAR NOVO PERSONAGEM -->
       <form id="pers_form">
         <label for="per_nome">Nome:</label><br>
-        <input type="text" id="per_nome_personagem" required autofocus v-model="cad_usuario"><br>
+        <input type="text" id="per_nome" required autofocus v-model="cad_nome"><br>
 
         <label for="per_raca">Raça:</label><br>
-        <vue-dropdown :config="racalist" @setSelectedOption="setNewRaca($event);"></vue-dropdown>
+        <!-- <vue-dropdown id="per_raca" v-model="cad_raca" :config="racalist" @setSelectedOption="setNewRaca($event);></vue-dropdown>-->
 
         <!--<input type="password" id="cad_senha" required autofocus v-model="cad_senha"><br>-->
 
@@ -24,23 +24,36 @@
 
 
             <!--<div class="ability-score-manager-stats">-->
-                <div class="ability-score-manager-stat" data-stat-id="1"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_7">Força</label></span><span class="builder-field-input">
-                    <input class="builder-field-value" id="qry_7" type="text" value=""></span></div></div>
-                <div class="ability-score-manager-stat" data-stat-id="2"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_8">Destreza</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_8" type="text" value=""></span></div></div>
-                <div class="ability-score-manager-stat" data-stat-id="3"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_9">Constituição</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_9" type="text" value=""></span></div></div>
-                <div class="ability-score-manager-stat" data-stat-id="4"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_10">Inteligência</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_10" type="text" value=""></span></div></div>
-                <div class="ability-score-manager-stat" data-stat-id="5"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_11">Sabedoria</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_11" type="text" value=""></span></div></div>
-                <div class="ability-score-manager-stat" data-stat-id="6"><div class="builder-field form-input-field"><span class="builder-field-label"><label class="builder-field-heading form-input-field-label" for="qry_12">Carisma</label></span><span class="builder-field-input"><input class="builder-field-value" id="qry_12" type="text" value=""></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="1">
+                    <div class="builder-field form-input-field">
+                        <span class="builder-field-label">
+                            <label for="per_forca">Força</label>
+                        </span>
+                        <span class="builder-field-input">
+                            <input class="builder-field-value" id="qry_7" type="text" value="" required autofocus v-model="cad_for">
+                        </span>
+                    </div>
+                </div>
+                <div class="ability-score-manager-stat" data-stat-id="2"><div class="builder-field form-input-field"><span class="builder-field-label"><label for="per_destreza">Destreza</label></span><span class="builder-field-input">
+                    <input class="builder-field-value" id="per_destreza" type="text" value="" required autofocus v-model="cad_des"></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="3"><div class="builder-field form-input-field"><span class="builder-field-label"><label for="per_constituicao">Constituição</label></span><span class="builder-field-input">
+                    <input class="builder-field-value" id="per_constituicao" type="text" value="" required autofocus v-model="cad_con"></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="4"><div class="builder-field form-input-field"><span class="builder-field-label"><label for="per_inteligencia">Inteligência</label></span><span class="builder-field-input">
+                    <input class="builder-field-value" id="per_inteligencia" type="text" value="" required autofocus v-model="cad_int"></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="5"><div class="builder-field form-input-field"><span class="builder-field-label"><label for="per_sabedoria">Sabedoria</label></span><span class="builder-field-input">
+                    <input class="builder-field-value" id="per_sabedoria" type="text" value="" required autofocus v-model="cad_sab"></span></div></div>
+                <div class="ability-score-manager-stat" data-stat-id="6"><div class="builder-field form-input-field"><span class="builder-field-label"><label for="per_carisma">Carisma</label></span><span class="builder-field-input">
+                    <input class="builder-field-value" id="per_carisma" type="text" value="" required autofocus v-model="cad_car"></span></div></div>
             <!--</div>-->
 
         <label for="per_classe">Antecedente:</label><br>
         <vue-dropdown :config="antedlist" @setSelectedOption="setNewAnted($event);"></vue-dropdown>
 
         <label for="per_hist">Historia:</label><br>
-        <input type="text" id="per_historia" required autofocus v-model="cad_usuario"><br>
+        <input type="text" id="per_historia" required autofocus v-model="cad_historia"><br>
 
         <label for="per_hist">Equipamento:</label><br>
-        <input type="text" id="per_historia" required autofocus v-model="cad_usuario"><br>
+        <input type="text" id="per_historia" required autofocus v-model="cad_equipamento"><br>
 
 
         <!--<input type="text" id="cad_exibicao" required autofocus v-model="cad_exibicao">-->
@@ -139,7 +152,7 @@ export default {
   },
   data() {
     return {
-      cad_usuario: '', cad_senha: '', cad_exibicao: '', listas: [],
+      cad_nome: '', cad_raca: '', cad_classe: '', cad_for: '', cad_des: '', cad_con: '', cad_int: '', cad_sab: '', cad_car: '', cad_historia: '', cad_equipamento: '', listas: [],
       put_show: false, put_usuario: '', put_senha: '', put_exibicao: '',
       del_show: false, del_usuario: '', del_confirm: '',
       cod_erro: '', put_type: '', showMenu: true,
@@ -209,9 +222,10 @@ export default {
   methods: {
     cadastrar() {
       axios.post('/usuario', {
-        nomeUsuario: this.cad_usuario,
-        senha: this.cad_senha,
-        nomeExibicao:this.cad_exibicao
+        nome: this.cad_nome,
+        raca: this.RacaSelecionada,
+        classe: this.ClasseSelecionada,
+        anted:this.AntedSelecionado
       },
       {
         auth: { username: this.getUsuario, password: this.getSenha }
