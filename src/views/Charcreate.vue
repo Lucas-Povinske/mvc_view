@@ -3,91 +3,56 @@
     <img alt="app_logo" src="../assets/logo.png">
     <div id="menu-create" style="marginTop:50px">
 
-      <h1>Criação do Personagem</h1>
-      <hr><br>
+        <h1>Criação do Personagem</h1>
+        <hr>
+        <br>
 
-       <!-- CADASTRAR NOVO PERSONAGEM -->
-      <form id="pers_form">
-        <div id="p_nome">
-        <label for="per_nome"><h2>Nome:</h2></label>
-        <input type="text" id="per_nome" required autofocus v-model="cad_nome"><br>
-        </div>
-
-        <div id="p_raca" style="margin: center">
-        <label for="per_raca"><h2>Raça:</h2></label>
-        <vue-dropdown id='per_raca' :config="racalist" @setSelectedOption="setNewRaca($event);"></vue-dropdown>
-        </div><br>
-        <!--<input type="password" id="cad_senha" required autofocus v-model="cad_senha"><br>-->
-
-        <div id="p_classe">
-        <label for="per_classe"><h2>Classe:</h2></label>
-        <vue-dropdown id='per_classe' :config="classelist" @setSelectedOption="setNewClasse($event);"></vue-dropdown>
-        </div><br>
-
-        <div id="p_hab">
-        <label for="per_hab"><h2>Habilidades:</h2></label>
-        <!--<label for="per_hab_forca">Força</label><br>-->
-        </div><br>
-
-            <!--<div class="ability-score-manager-stats">-->
-
-<table>
-  <tr>
-    <th><label for="per_forca">Força</label></th>
-    <th><label for="per_destreza">Destreza</label></th>
-    <th><label for="per_constituicao">Constituição</label></th>
-    <th><label for="per_inteligencia">Inteligência</label></th>
-    <th><label for="per_sabedoria">Sabedoria</label></th>
-    <th><label for="per_carisma">Carisma</label></th>
-  </tr>
-  <tr>
-    <td><input class="builder-field-value" id="per_forca" type="text" value="" style="width: 100px;" required autofocus v-model="cad_for"></td>
-    <td><input class="builder-field-value" id="per_destreza" type="text" value="" style="width: 100px;" required autofocus v-model="cad_des"></td>
-    <td><input class="builder-field-value" id="per_constituicao" type="text" value="" style="width: 100px;" required autofocus v-model="cad_con"></td>
-    <td><input class="builder-field-value" id="per_inteligencia" type="text" value="" style="width: 100px;" required autofocus v-model="cad_int"></td>
-    <td><input class="builder-field-value" id="per_sabedoria" type="text" value="" style="width: 100px;" required autofocus v-model="cad_sab"></td>
-    <td><input class="builder-field-value" id="per_carisma" type="text" value="" style="width: 100px;" required autofocus v-model="cad_car"></td>
-  </tr>
-</table>
-                <!--
-                <div id="p_for">
-                <label for="per_forca">Força</label>
-                    <input class="builder-field-value" id="qry_7" type="text" value="" required autofocus v-model="cad_for">
-                </div>
-
-                <div id="p_des">
-                <label for="per_destreza">Destreza</label>
-                    <input class="builder-field-value" id="per_destreza" type="text" value="" required autofocus v-model="cad_des">
-                </div>
-                
-                <label for="per_constituicao">Constituição</label>
-                    <input class="builder-field-value" id="per_constituicao" type="text" value="" required autofocus v-model="cad_con">
-                
-                <label for="per_inteligencia">Inteligência</label>
-                    <input class="builder-field-value" id="per_inteligencia" type="text" value="" required autofocus v-model="cad_int">
-                
-                <label for="per_sabedoria">Sabedoria</label>
-                    <input class="builder-field-value" id="per_sabedoria" type="text" value="" required autofocus v-model="cad_sab">
-                
-                <label for="per_carisma">Carisma</label>
-                    <input class="builder-field-value" id="per_carisma" type="text" value="" required autofocus v-model="cad_car">
+        <!-- CADASTRAR NOVO PERSONAGEM -->
+        <form id="pers_form">
+            <div id="p_nome">
+                <label for="per_nome"><h2>Nome:</h2></label>
+                <input type="text" id="per_nome" required autofocus v-model="cad_nome"><br>
             </div>
 
-        <label for="per_classe">Antecedente:</label><br>
-        <vue-dropdown :config="antedlist" @setSelectedOption="setNewAnted($event);"></vue-dropdown>
+            <div id="p_raca">
+                <label for="per_raca"><h2>Raça:</h2></label>
+                <vue-dropdown id='per_raca' :config="racalist" @setSelectedOption="setNewRaca($event);" style="margin:auto"></vue-dropdown>
+            </div>
+            <br>
 
-        <label for="per_hist">Historia:</label><br>
-        <input type="text" id="per_historia" required autofocus v-model="cad_historia"><br>
+            <div id="p_classe">
+                <label for="per_classe"><h2>Classe:</h2></label>
+                <vue-dropdown id='per_classe' :config="classelist" @setSelectedOption="setNewClasse($event);" style="margin:auto"></vue-dropdown>
+            </div>
+            <br>
 
-        <label for="per_hist">Equipamento:</label><br>
-        <input type="text" id="per_historia" required autofocus v-model="cad_equipamento"><br>-->
+            <div id="p_hab">
+                <label for="per_hab"><h2>Habilidades:</h2></label>
+            </div>
+            <br>
 
-
-        <!--<input type="text" id="cad_exibicao" required autofocus v-model="cad_exibicao">-->
-        <p><button type="submit">Salvar</button></p>
-      </form>
-      </div>
-  </div>
+            <table> 
+                <tr>
+                    <th><label for="per_forca">Força</label></th>
+                    <th><label for="per_destreza">Destreza</label></th>
+                    <th><label for="per_constituicao">Constituição</label></th>
+                    <th><label for="per_inteligencia">Inteligência</label></th>
+                    <th><label for="per_sabedoria">Sabedoria</label></th>
+                    <th><label for="per_carisma">Carisma</label></th>
+                </tr>
+                <tr>
+                    <td><input class="builder-field-value" id="per_forca" type="text" value="" style="width: 100px;" required autofocus v-model="cad_for"></td>
+                    <td><input class="builder-field-value" id="per_destreza" type="text" value="" style="width: 100px;" required autofocus v-model="cad_des"></td>
+                    <td><input class="builder-field-value" id="per_constituicao" type="text" value="" style="width: 100px;" required autofocus v-model="cad_con"></td>
+                    <td><input class="builder-field-value" id="per_inteligencia" type="text" value="" style="width: 100px;" required autofocus v-model="cad_int"></td>
+                    <td><input class="builder-field-value" id="per_sabedoria" type="text" value="" style="width: 100px;" required autofocus v-model="cad_sab"></td>
+                    <td><input class="builder-field-value" id="per_carisma" type="text" value="" style="width: 100px;" required autofocus v-model="cad_car"></td>
+                </tr>
+            </table>
+            <p><button type="submit" id="per_confirmar">Salvar</button></p>
+            </form>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -254,12 +219,14 @@ export default {
     text-align: center;
     border:0px solid transparent;
     }
-  form{
+  #pers_form{
     align-content: center;
     position: initial;
     background-color: #85838386;
     height: auto;
     width: 100%;
+    padding-block: 20px;
+    border-radius: 5px;
     margin-left: auto; margin-right: auto;
   }
   #p_nome{
@@ -274,14 +241,33 @@ export default {
     margin-top: 5px;
     margin-bottom: 5px;
   }
-  input[type=text] {
+  #per_nome, #per_forca, #per_destreza, #per_constituicao, #per_inteligencia, #per_sabedoria, #per_carisma {
   width: 300px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: 2px;
-  border-radius: 4px;
+  border-radius: 5px;
   }
+
+    #per_confirmar{
+      background-color: #4CAF50; /* Green */
+    border-radius: 5px;
+    color: white;
+      background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
   img{ cursor: pointer; }
   #erro{ color: red; }
 </style>
